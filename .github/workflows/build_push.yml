@@ -111,3 +111,9 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
+
+      - name: Publish Maven
+        if: startsWith(github.ref, 'refs/tags/')
+        run: ./gradlew publishAllPublicationsToGitHubRepository
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

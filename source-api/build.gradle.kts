@@ -2,6 +2,7 @@ plugins {
     id("mihon.library")
     kotlin("multiplatform")
     kotlin("plugin.serialization")
+    `maven-publish`
 }
 
 kotlin {
@@ -41,5 +42,17 @@ tasks {
         kotlinOptions.freeCompilerArgs += listOf(
             "-Xexpect-actual-classes",
         )
+    }
+}
+
+publishing {
+    repositories {
+        maven("https://maven.pkg.github.com/Synth-ID/mihon") {
+            name = "GitHub"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }

@@ -5,6 +5,9 @@ plugins {
     `maven-publish`
 }
 
+group = "eu.kanade.tachiyomi"
+version = "1.5"
+
 kotlin {
     androidTarget()
     sourceSets {
